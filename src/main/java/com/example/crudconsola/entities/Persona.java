@@ -11,12 +11,14 @@ public class Persona
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     //creacion de campo nombre
-
+    @Column(nullable = false)
     private String nombre;
+    @Column(nullable = false)
     private String apellido1;
+    @Column(nullable = false)
     private String apellido2;
     //lenguaje_programacion
-    @Column(name = "lenguaje_programacion")
+    @Column(name = "lenguaje_programacion",nullable = false)
     private String lenguajeProgramacion;
 
     public Persona()
