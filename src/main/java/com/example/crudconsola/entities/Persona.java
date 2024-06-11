@@ -1,6 +1,9 @@
 package com.example.crudconsola.entities;
 
 import jakarta.persistence.*;
+
+import java.util.Date;
+
 //Creacion de una entidad = tabla llamada personas
 @Entity
 @Table(name="personas")
@@ -9,6 +12,7 @@ public class Persona
     //creacion de id, PK autoincrementable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "persona_id",columnDefinition = "int",length = 10)
     private Integer id;
     //creacion de campo nombre
     @Column(nullable = false)
@@ -20,6 +24,9 @@ public class Persona
     //lenguaje_programacion
     @Column(name = "lenguaje_programacion",nullable = false)
     private String lenguajeProgramacion;
+
+    @Column(name = "persona_fnac",nullable = false,columnDefinition = "date")
+    private Date fechaNacimiento;
 
     public Persona()
     {
