@@ -1,11 +1,17 @@
 package com.example.crudconsola.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "cliente")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

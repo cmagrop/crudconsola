@@ -1,11 +1,20 @@
 package com.example.crudconsola.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "profesional")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+
 public class Profesional {
 
     @Id

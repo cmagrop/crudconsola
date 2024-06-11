@@ -91,5 +91,13 @@ public class Persona
                 ", lenguajeProgramacion='" + lenguajeProgramacion + '\'' +
                 '}';
     }
+
+    public void prueba()
+    {
+       Cliente cliente = new Cliente();
+       Profesional profesional = new Profesional();
+
+
+    }
 }
 
