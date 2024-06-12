@@ -18,7 +18,7 @@ public class Atencion {
     @Column(name = "diagnostico_atencion")
     private String dignosticoAtencion;
 
-    @Column(name = "tratamiento_atencion",columnDefinition = "varchar", length = 400)
+    @Column(name = "tratamiento_atencion",columnDefinition = "varchar(400)")
     private String tratamientoAtencion;
 
 
