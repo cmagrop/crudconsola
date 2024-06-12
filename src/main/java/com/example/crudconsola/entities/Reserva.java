@@ -12,10 +12,6 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
     private  Integer idReserva;
-    @Column(name = "FK_cliente")
-    private Integer FKCliente;
-    @Column(name = "FK_profesional")
-    private Integer FKProfesional;
     @Column(name = "fecha_reserva")
     private Date fechaReserva;
     @Column(name ="baja_reserva")
@@ -23,6 +19,14 @@ public class Reserva {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true,mappedBy = "reserva")
     private Atencion atencion;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_cliente")
+    Cliente cliente;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_profesional")
+    Profesional profesional;
 
 
 }

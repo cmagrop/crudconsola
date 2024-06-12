@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
@@ -18,7 +19,7 @@ public class Cliente {
     private Integer id_cliente;
     @Column(name = "tipo_documento_cliente", nullable = false,columnDefinition = "int")
     private Integer tipoDocumentoCliente;
-    @Column(name = "password_cliente", nullable = false, columnDefinition = "varchar",length = 12)
+    @Column(name = "password_cliente", nullable = false, columnDefinition = "varchar(12)")
     private String passwordCliente;
     @Column(name = "nombre_cliente", nullable = false, columnDefinition = "varchar(20)")
     private String nombreCliente;
@@ -40,6 +41,9 @@ public class Cliente {
     private String emailCliente;
     @Column(name = "telefono_cliente", nullable = false, columnDefinition = "varchar(25)")
     private String telefonoCliente;
+
+    @OneToMany(mappedBy = "cliente")
+    Set<Reserva> listaReservas;
 
 
 

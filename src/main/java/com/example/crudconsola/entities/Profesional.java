@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "profesional")
@@ -21,7 +22,7 @@ public class Profesional {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_profesional;
 
-    @Column(name = "password_profesional", nullable = false, columnDefinition = "varchar",length = 12)
+    @Column(name = "password_profesional", nullable = false, columnDefinition = "varchar(12)")
     private String passwordProfesional;
     @Column(name = "nombre_profesional", nullable = false, columnDefinition = "varchar(20)")
     private String nombreProfesional;
@@ -43,6 +44,21 @@ public class Profesional {
     private String emailProfesional;
     @Column(name = "telefono_profesional", nullable = false, columnDefinition = "varchar(25)")
     private String telefonoProfesional;
+
+    //relaciones
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(name = "profesional_especialidad",
+    joinColumns =
+            @JoinColumn(name = "id_profesional"),
+    inverseJoinColumns =
+            @JoinColumn(name = "id_especialidad"),
+    uniqueConstraints =
+            @UniqueConstraint(columnNames = {"id_profesional","id_especialidad"})
+    )
+    private Set<Especialidad> especialidades; // 1 profesional puede muchas especi
+
+    @OneToMany(mappedBy = "profesional")
+    Set<Reserva> listaReservas;
 
 
 
