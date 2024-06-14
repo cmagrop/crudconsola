@@ -11,12 +11,12 @@ public interface EspecialidadRepository extends
         CrudRepository<Especialidad,Integer> {
     //select * from especilidad
     @Query("select e from Especialidad e")
-    public List<Especialidad> getEspecialidades(); //listando especialidades
+     List<Especialidad> getEspecialidades(); //listando especialidades
 
     //select * from especialidad where id_especialidad = 5
 
-    @Query("select esp from Especialidad esp where esp.id_especialidad in ?1 ")
-    public Optional<Especialidad> getEspecialidadPorId(Integer id);
+    @Query("select esp from Especialidad esp where esp.idEspecialidad in ?1 ")
+    Optional<Especialidad> getEspecialidadPorId(Integer id);
 
 
 

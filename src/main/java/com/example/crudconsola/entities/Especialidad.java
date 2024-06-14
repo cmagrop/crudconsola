@@ -9,7 +9,8 @@ import java.util.Set;
 public class Especialidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_especialidad;
+    @Column(name = "id_especialidad")
+    private Integer idEspecialidad;
 
     @Column(name = "nombre_especialidad",columnDefinition = "varchar(25)",nullable = false)
     private String nombreEspecialidad;
