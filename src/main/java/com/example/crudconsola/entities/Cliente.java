@@ -16,9 +16,12 @@ import java.util.Set;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_cliente;
+    @Column(name = "id_cliente")
+    private Integer idCliente;
     @Column(name = "tipo_documento_cliente", nullable = false,columnDefinition = "int")
     private Integer tipoDocumentoCliente;
+    @Column(name = "identificador_documento")
+    private String identificadorDocumento;
     @Column(name = "password_cliente", nullable = false, columnDefinition = "varchar(12)")
     private String passwordCliente;
     @Column(name = "nombre_cliente", nullable = false, columnDefinition = "varchar(20)")
@@ -45,8 +48,21 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     Set<Reserva> listaReservas;
 
+    public Cliente(Integer idCliente, Integer tipoDocumentoCliente, String identificadorDocumento, String passwordCliente, String nombreCliente, String apellido1Cliente, String apellido2Cliente, String nacionalidadCliente, Date fnacCliente, Integer sexoCliente, String direccionCliente, String comunaCliente, String emailCliente, String telefonoCliente) {
+        this.idCliente = idCliente;
+        this.tipoDocumentoCliente = tipoDocumentoCliente;
+        this.identificadorDocumento = identificadorDocumento;
+        this.passwordCliente = passwordCliente;
+        this.nombreCliente = nombreCliente;
+        this.apellido1Cliente = apellido1Cliente;
+        this.apellido2Cliente = apellido2Cliente;
+        this.nacionalidadCliente = nacionalidadCliente;
+        this.fnacCliente = fnacCliente;
+        this.sexoCliente = sexoCliente;
+        this.direccionCliente = direccionCliente;
+        this.comunaCliente = comunaCliente;
+        this.emailCliente = emailCliente;
+        this.telefonoCliente = telefonoCliente;
 
-
-
-
+    }
 }

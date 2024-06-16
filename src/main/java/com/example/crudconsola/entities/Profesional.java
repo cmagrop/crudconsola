@@ -20,7 +20,8 @@ public class Profesional {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_profesional;
+    @Column(name = "id_profesional")
+    private Integer idProfesional;
 
     @Column(name = "password_profesional", nullable = false, columnDefinition = "varchar(12)")
     private String passwordProfesional;
