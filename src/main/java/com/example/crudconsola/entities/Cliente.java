@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+
 
 public class Cliente {
     @Id
@@ -64,5 +64,25 @@ public class Cliente {
         this.emailCliente = emailCliente;
         this.telefonoCliente = telefonoCliente;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "telefonoCliente='" + telefonoCliente + '\'' +
+                ", emailCliente='" + emailCliente + '\'' +
+                ", comunaCliente='" + comunaCliente + '\'' +
+                ", direccionCliente='" + direccionCliente + '\'' +
+                ", sexoCliente=" + sexoCliente +
+                ", fnacCliente=" + fnacCliente +
+                ", nacionalidadCliente='" + nacionalidadCliente + '\'' +
+                ", apellido2Cliente='" + apellido2Cliente + '\'' +
+                ", apellido1Cliente='" + apellido1Cliente + '\'' +
+                ", nombreCliente='" + nombreCliente + '\'' +
+                ", passwordCliente='" + passwordCliente + '\'' +
+                ", identificadorDocumento='" + identificadorDocumento + '\'' +
+                ", tipoDocumentoCliente=" + tipoDocumentoCliente +
+                ", idCliente=" + idCliente +
+                '}';
     }
 }

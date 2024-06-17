@@ -13,6 +13,8 @@ import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -33,7 +35,9 @@ public class CrudConsolaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		System.out.println("Hola");
-		createCliente();
+		//createCliente();
+		//ultimoRegistroCliente();
+		encontrarClientes();
 
 
 	}
@@ -41,36 +45,6 @@ public class CrudConsolaApplication implements CommandLineRunner {
 	@Transactional
 	public void createCliente() throws ParseException {
 		Scanner scanner = new Scanner(System.in);
-		/*System.out.println("Nombre");
-		String nombre = scanner.nextLine();
-		System.out.println("Primer Apellido");
-		String apel1 = scanner.nextLine();
-		System.out.println("Segundo Apellido");
-		String apel2 = scanner.nextLine();
-		System.out.println("Nacionalidad");
-		String nacionalidad = scanner.nextLine();
-		System.out.println("Ingrese fecha de nacimiento");
-		String fnac = scanner.nextLine();
-		SimpleDateFormat dNac = new SimpleDateFormat("yyyy-mm-dd");
-		Date fechaDate = dNac.parse(fnac);
-		System.out.println("Ingrese 1: femenino, 2: masculino");
-		Integer sexo = scanner.nextInt();
-		System.out.print("Ingrese direccion:");
-		String direccion = scanner.nextLine();
-		System.out.println("Ingrese comuna");
-		String comuna = scanner.nextLine();
-		System.out.println("Email:");
-		String email = scanner.next();
-		System.out.println("Telefono:");
-		String telefono=scanner.next();
-		System.out.println("Ingrese password");
-		String password = scanner.next();
-		System.out.println("Tipo de documento 1: cedula de identidad 2: pasaporte");
-		Integer tipoDocumento = scanner.nextInt();
-		System.out.println("Ingrese Identificador Documento");
-		String idDocumento = scanner.next();
-		scanner.close();
-*/
 		System.out.println("Nombre");
 		String nombre = scanner.nextLine();
 		System.out.println("Primer Apellido");
@@ -112,6 +86,24 @@ public class CrudConsolaApplication implements CommandLineRunner {
 		repositoryCliente.save(cliente);
 
 
+	}
+
+	@Transactional(readOnly = true)
+	public void ultimoRegistroCliente()
+	{
+		System.out.println("Obtener el ultimo cliente registrado");
+		Optional<Cliente> optionalCliente = repositoryCliente.getLastRegistration();
+		optionalCliente.ifPresent(System.out::println);
+
+	}
+
+	@Transactional(readOnly = true)
+	public void encontrarClientes()
+	{
+		System.out.println("me filtre a clientes por el sexo y por el identificador de documento en orden ascedente");
+		List<Cliente> clientes =
+				repositoryCliente.findBySexoClienteOrderByIdentificadorDocumentoAsc(2);
+		clientes.forEach(System.out::println);
 	}
 
 
