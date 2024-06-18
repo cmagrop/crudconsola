@@ -3,11 +3,13 @@ package com.example.crudconsola.services;
 import com.example.crudconsola.entities.Cliente;
 import com.example.crudconsola.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ClienteServiceImpl implements ClienteService{
     @Autowired
     private ClienteRepository clienteRepository;
@@ -15,6 +17,7 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     @Transactional(readOnly = true)
     public List<Cliente> findAll() {
+
         return (List<Cliente>)clienteRepository.findAll();
     }
 
@@ -27,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Cliente save(Cliente cliente) {
-        return null;
+        return clienteRepository.save(cliente);
     }
 
     @Override
@@ -37,6 +40,10 @@ public class ClienteServiceImpl implements ClienteService{
 
     @Override
     public Optional<Cliente> delete(Integer id) {
-        return Optional.empty();
+        Optional<Cliente> clienteOptional = clienteRepository.findById(id);
+        clienteOptional.ifPresent(clienteDb->{
+            clienteRepository.delete(clienteDb);
+        });
+        return clienteOptional;
     }
 }

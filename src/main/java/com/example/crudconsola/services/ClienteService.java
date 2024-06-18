@@ -12,7 +12,7 @@ public interface ClienteService {
 
     Optional<Cliente> findById(Integer id); //me va mostrar un cliente por id
 
-    Cliente save(Cliente cliente); //me guardará a un cliente
+    Cliente save(Cliente cliente); //guardará a un cliente
 
     Optional<Cliente> update(Integer id,Cliente cliente);
 
