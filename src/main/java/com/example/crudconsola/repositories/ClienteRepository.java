@@ -3,6 +3,7 @@ package com.example.crudconsola.repositories;
 import com.example.crudconsola.entities.Cliente;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,14 @@ public interface ClienteRepository extends CrudRepository<Cliente,Integer> {
 
     @Query("select count(c) from Cliente c")
     Integer getTotalCliente();
+
+    @Query(value = "select nombre_cliente, apellido1_cliente, apellido2_cliente " +
+            "from cliente",nativeQuery = true)
+    List<Cliente> listaClientes();
+
+    @Query(value = "select * from cliente where cliente.sexo_cliente=:sexo",
+            nativeQuery = true)
+    List<Cliente> listaDeClientesPorSexo(@Param("sexo") Integer sexo);
 
     @Query("select c from Cliente c where c.idCliente=(select max(c.idCliente) from Cliente c)")
     Optional<Cliente> getLastRegistration();
@@ -26,4 +35,5 @@ public interface ClienteRepository extends CrudRepository<Cliente,Integer> {
 
     *
      */
+
 }

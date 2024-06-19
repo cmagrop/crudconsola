@@ -37,7 +37,8 @@ public class CrudConsolaApplication implements CommandLineRunner {
 		System.out.println("Hola");
 		//createCliente();
 		//ultimoRegistroCliente();
-		encontrarClientes();
+		//encontrarClientes();
+		encontrarClientesPorSexo(2);
 
 
 	}
@@ -104,6 +105,16 @@ public class CrudConsolaApplication implements CommandLineRunner {
 		List<Cliente> clientes =
 				repositoryCliente.findBySexoClienteOrderByIdentificadorDocumentoAsc(2);
 		clientes.forEach(System.out::println);
+	}
+
+	@Transactional(readOnly = true)
+	public void encontrarClientesPorSexo(Integer sexoId)
+	{
+
+		List<Cliente> clientesPorSexo =
+				repositoryCliente.listaDeClientesPorSexo(sexoId);
+		clientesPorSexo.forEach(System.out::println);
+
 	}
 
 
