@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+//localhost:8080/api/clientes
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteRestController {
@@ -36,7 +36,7 @@ public class ClienteRestController {
 
         return ResponseEntity.notFound().build();
     }
-
+/*
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result)
     {
@@ -45,5 +45,5 @@ public class ClienteRestController {
 
 
     }
-
+*/
 }
