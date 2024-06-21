@@ -3,6 +3,7 @@ package com.example.crudconsola;
 import com.example.crudconsola.entities.Cliente;
 import com.example.crudconsola.repositories.ClienteRepository;
 import com.example.crudconsola.repositories.EspecialidadRepository;
+import com.example.crudconsola.repositories.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,9 @@ public class CrudConsolaApplication implements CommandLineRunner {
 	@Autowired
 	private ClienteRepository repositoryCliente;
 
+	@Autowired
+	private ReservaRepository reservaRepository;
+
 	public static void main(String[] args)  {
 
 		//SpringApplication.run(CrudConsolaApplication.class, args);
@@ -38,8 +42,8 @@ public class CrudConsolaApplication implements CommandLineRunner {
 		//createCliente();
 		//ultimoRegistroCliente();
 		//encontrarClientes();
-		encontrarClientesPorSexo(2);
-
+		//encontrarClientesPorSexo(2);
+		listarClientesReservaProfesionales();
 
 	}
 
@@ -116,6 +120,21 @@ public class CrudConsolaApplication implements CommandLineRunner {
 		clientesPorSexo.forEach(System.out::println);
 
 	}
+
+	@Transactional(readOnly = true)
+	public void listarClientesReservaProfesionales()
+	{
+		List<Object> listar = reservaRepository.listaClientesProfesionalesReservas();
+		for(Object elemento: listar)
+		{
+			System.out.println(elemento);
+
+		}
+
+
+	}
+
+
 
 
 
