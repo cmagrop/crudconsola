@@ -1,6 +1,6 @@
 package com.example.crudconsola.repositories;
 
-import com.example.crudconsola.ResultadoReserva;
+import com.example.crudconsola.models.ResultadoReserva;
 import com.example.crudconsola.entities.Reserva;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,7 +15,7 @@ public interface ReservaRepository extends CrudRepository<Reserva,Integer> {
             "INNER JOIN cliente ON reserva.id_cliente=cliente.id_cliente\n" +
             "INNER JOIN profesional ON reserva.id_profesional= profesional.id_profesional and \n" +
             "reserva.baja_reserva=1;", nativeQuery = true)
-    List<Object> listaClientesProfesionalesReservas();
+    List<ResultadoReserva> listaClientesProfesionalesReservas();
 
     //Filtrar a cliente por id y listar sus reservas con profesional
 

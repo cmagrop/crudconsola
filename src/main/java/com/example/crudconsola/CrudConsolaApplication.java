@@ -1,8 +1,8 @@
 package com.example.crudconsola;
 
 import com.example.crudconsola.entities.Cliente;
+import com.example.crudconsola.models.ResultadoReserva;
 import com.example.crudconsola.repositories.ClienteRepository;
-import com.example.crudconsola.repositories.EspecialidadRepository;
 import com.example.crudconsola.repositories.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -124,10 +123,13 @@ public class CrudConsolaApplication implements CommandLineRunner {
 	@Transactional(readOnly = true)
 	public void listarClientesReservaProfesionales()
 	{
-		List<Object> listar = reservaRepository.listaClientesProfesionalesReservas();
-		for(Object elemento: listar)
+		List<ResultadoReserva> listarResultadosReserva = reservaRepository.listaClientesProfesionalesReservas();
+		for(ResultadoReserva elemento: listarResultadosReserva)
 		{
-			System.out.println(elemento);
+
+			System.out.println("Cliente: " + elemento.getCliente());
+			System.out.println(" Profesional: "+elemento.getProfesional());
+			System.out.println(" Fecha: " + elemento.getFecha());
 
 		}
 
